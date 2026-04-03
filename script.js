@@ -9,6 +9,42 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
+/* ---------- HERO VIDEO AUTOPLAY FALLBACK ---------- */
+const heroVideo = document.querySelector('.hero-video');
+
+if (heroVideo) {
+  const tryPlayHeroVideo = () => {
+    if (heroVideo.readyState === 0) heroVideo.load();
+    const playPromise = heroVideo.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {
+        // Some browsers require a user interaction before media can autoplay.
+      });
+    }
+  };
+
+  heroVideo.muted = true;
+  heroVideo.playsInline = true;
+  heroVideo.setAttribute('muted', '');
+  heroVideo.setAttribute('playsinline', '');
+  heroVideo.setAttribute('webkit-playsinline', '');
+
+  if (document.readyState === 'complete') {
+    tryPlayHeroVideo();
+  } else {
+    window.addEventListener('load', tryPlayHeroVideo, { once: true });
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tryPlayHeroVideo();
+  });
+  window.addEventListener('pageshow', tryPlayHeroVideo);
+
+  ['click', 'touchstart', 'touchend', 'keydown'].forEach((evtName) => {
+    window.addEventListener(evtName, tryPlayHeroVideo, { once: true, passive: true });
+  });
+}
+
 /* ---------- HAMBURGER / MOBILE MENU ---------- */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
