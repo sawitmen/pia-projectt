@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nusantara City — Kota untuk Bermain & Berkembang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">NUSANTARA<span class="logo-accent">CITY</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#pilar">Pilar</a></li>
+        <li><a href="#kota">Kota</a></li>
+        <li><a href="#berita">Berita</a></li>
+        <li><a href="#karir">Karir</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Hubungi Kami</a>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#pilar">Pilar</a></li>
+      <li><a href="#kota">Kota</a></li>
+      <li><a href="#berita">Berita</a></li>
+      <li><a href="#karir">Karir</a></li>
+      <li><a href="#daftar">Hubungi Kami</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <!-- Ganti src di bawah dengan path video kamu, contoh: src="video/hero.mp4" -->
+        <source src="video/city.mp4" type="video/mp4" />
+        <!-- Fallback kalau browser tidak support video -->
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow hero-reveal" style="--hi: 0">VISI INDONESIA 2030</p>
+      <h1 class="hero-title hero-reveal" style="--hi: 1">
+        Memadukan <span class="text-gold">Permainan</span><br />
+        dengan Masa Depan<br />
+        yang <em>Gemilang</em>
+      </h1>
+      <p class="hero-desc hero-reveal" style="--hi: 2">
+        Nusantara City adalah kota pertama di Indonesia yang dibangun<br class="d-none-mobile" />
+        khusus untuk hiburan, olahraga, dan budaya bertaraf dunia.
+      </p>
+      <div class="hero-actions hero-reveal" style="--hi: 3">
+        <a href="#kota" class="btn btn-primary">Jelajahi Kota</a>
+        <a href="#tentang" class="btn btn-ghost">Pelajari Lebih Lanjut</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE SECTION -->
+  <section class="tagline-section" id="tentang">
+    <div class="container">
+      <div class="tagline-inner reveal">
+        <p class="section-label">TENTANG KAMI</p>
+        <h2 class="tagline-heading">
+          Membangun Ekosistem<br />
+          <span class="text-gold">Hiburan & Investasi</span><br />
+          Terbesar di Asia Tenggara
+        </h2>
+        <p class="tagline-body">
+          Nusantara City Investment Company, perusahaan di bawah naungan INA (Indonesia Investment Authority),
+          menghadirkan peluang investasi terdepan. Dengan memanfaatkan kekuatan <strong>Permainan</strong>,
+          kami mendorong pertumbuhan ekonomi dan meningkatkan kualitas hidup masyarakat Indonesia.
+        </p>
+        <a href="#" class="link-arrow" id="btnEksplorasi" onclick="openGallery(event)">Eksplorasi Lebih
+          <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY MODAL -->
+  <div class="gallery-modal" id="galleryModal" onclick="closeGalleryOnBackdrop(event)">
+    <div class="gallery-modal-inner">
+      <button class="gallery-close" onclick="closeGallery()">&times;</button>
+      <div class="gallery-carousel">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-slide active">
+            <img src="https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=1400&q=80"
+              alt="Jakarta SCBD Skyline" />
+            <div class="gallery-caption">SCBD — Sudirman Central Business District</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="https://i.postimg.cc/JnVZMK9b/pexels-tomfisk-3452544.jpg" alt="Jakarta Skyline" />
+            <div class="gallery-caption">Jakarta — Stadion Gelora Bung Karno</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="https://i.postimg.cc/L4vYbH6f/pexels-javaistan-29899222.jpg" alt="Jakarta Night" />
+            <div class="gallery-caption">Jakarta — Gemerlap di Malam Hari</div>
+          </div>
+          <div class="gallery-slide">
+            <img src="https://i.postimg.cc/VNM0Gnd6/pexels-tomfisk-15748182.jpg" alt="Jakarta Business District" />
+            <div class="gallery-caption">Distrik Bisnis — Pusat Ekonomi Indonesia</div>
+          </div>
+        </div>
+        <button class="gallery-btn gallery-prev" onclick="galleryMove(-1)">&#8592;</button>
+        <button class="gallery-btn gallery-next" onclick="galleryMove(1)">&#8594;</button>
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS SECTION -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="250">0</span>
+          <span class="stat-unit">KM²</span>
+          <p class="stat-label">Lahan untuk Berkembang</p>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="300">0</span>
+          <span class="stat-unit">+</span>
+          <p class="stat-label">Atraksi Kelas Dunia</p>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="15">0</span>
+          <span class="stat-unit">+</span>
+          <p class="stat-label">Distrik Unik</p>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-number" data-target="500">0</span>
+          <span class="stat-unit">K</span>
+          <p class="stat-label">Penduduk Masa Depan</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILAR SECTION -->
+  <section class="pillars-section" id="pilar">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">PILAR UTAMA</p>
+        <h2 class="section-title">Menghadirkan Hiburan, Olahraga &<br /><span class="text-gold">Budaya ke Panggung
+            Dunia</span></h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar-card reveal" style="--delay: 0s">
+          <div class="pillar-img pillar-img-1">
+            <div class="pillar-overlay"></div>
+          </div>
+          <div class="pillar-content">
+            <span class="pillar-icon">◉</span>
+            <h3>Hiburan</h3>
+            <p>Destinasi penuh kesenangan untuk semua usia — sempurna bagi para pencari sensasi dan keluarga yang ingin
+              menikmati pengalaman tak terlupakan.</p>
+            <a href="#" class="pillar-link">Jelajahi →</a>
+          </div>
+        </div>
+        <div class="pillar-card reveal" style="--delay: 0.15s">
+          <div class="pillar-img pillar-img-2">
+            <div class="pillar-overlay"></div>
+          </div>
+          <div class="pillar-content">
+            <span class="pillar-icon">◈</span>
+            <h3>Olahraga</h3>
+            <p>Meningkatkan lanskap atletik Indonesia melalui fasilitas berstandar dunia, kemitraan strategis, dan
+              penyelenggaraan event olahraga & esports premiere.</p>
+            <a href="#" class="pillar-link">Jelajahi →</a>
+          </div>
+        </div>
+        <div class="pillar-card reveal" style="--delay: 0.3s">
+          <div class="pillar-img pillar-img-3">
+            <div class="pillar-overlay"></div>
+          </div>
+          <div class="pillar-content">
+            <span class="pillar-icon">◇</span>
+            <h3>Budaya</h3>
+            <p>Merayakan kekayaan warisan nusantara dengan mengkurasi pengalaman budaya yang unik dan menjembatani
+              keragaman budaya Indonesia.</p>
+            <a href="#" class="pillar-link">Jelajahi →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KOTA SECTION -->
+  <section class="city-section" id="kota">
+    <div class="city-bg">
+      <div class="city-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="city-inner">
+        <div class="city-text reveal">
+          <p class="section-label">PENGEMBANGAN UNGGULAN</p>
+          <h2 class="section-title">NUSANTARA<br /><span class="text-gold">CITY</span></h2>
+          <p class="city-body">
+            Nusantara City memadukan hiburan, olahraga, dan budaya dengan cara yang belum pernah ada sebelumnya —
+            ditakdirkan menjadi pemain nomor satu dalam mahagame Permainan yang tak terbatas.
+          </p>
+          <div class="city-stats-mini">
+            <div class="mini-stat">
+              <strong>250+</strong>
+              <span>KM² Ruang Bermain</span>
+            </div>
+            <div class="mini-stat">
+              <strong>300+</strong>
+              <span>Atraksi Kelas Dunia</span>
+            </div>
+            <div class="mini-stat">
+              <strong>15+</strong>
+              <span>Distrik Unik</span>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary">Kunjungi Nusantara City</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTASI SECTION -->
+  <section class="invest-section">
+    <div class="container">
+      <div class="invest-inner">
+        <div class="invest-text reveal">
+          <p class="section-label">PELUANG INVESTASI</p>
+          <h2 class="section-title">Bergabunglah dalam<br /><span class="text-gold">Proyek Terbesar</span><br />Abad Ini
+          </h2>
+          <p>Jadilah bagian dari ekosistem yang membangun masa depan Indonesia. Kami membuka peluang investasi strategis
+            di berbagai sektor hiburan, properti, dan infrastruktur kota modern.</p>
+        </div>
+        <div class="invest-cards reveal">
+          <div class="invest-card">
+            <span class="invest-number">01</span>
+            <h4>Properti & Real Estate</h4>
+            <p>Kawasan hunian premium di jantung kota hiburan</p>
+          </div>
+          <div class="invest-card">
+            <span class="invest-number">02</span>
+            <h4>Pariwisata & Hospitality</h4>
+            <p>Hotel, resort, dan fasilitas wisata bertaraf internasional</p>
+          </div>
+          <div class="invest-card">
+            <span class="invest-number">03</span>
+            <h4>Teknologi & Inovasi</h4>
+            <p>Infrastruktur smart city dan platform digital terdepan</p>
+          </div>
+          <div class="invest-card">
+            <span class="invest-number">04</span>
+            <h4>Retail & Kuliner</h4>
+            <p>Pusat perbelanjaan dan kuliner dalam ekosistem hiburan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" id="kontak">
+    <div class="cta-bg">
+      <div class="cta-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <p class="section-label">MULAI SEKARANG</p>
+        <h2>Siap Menjadi Bagian dari<br /><span class="text-gold">Sejarah Indonesia?</span></h2>
+        <p>Daftarkan minat Anda dan dapatkan informasi eksklusif seputar peluang investasi dan perkembangan terbaru
+          Nusantara City.</p>
+        <form class="cta-form" onsubmit="handleSubmit(event)">
+          <input type="text" placeholder="Nama Lengkap" required />
+          <input type="email" placeholder="Alamat Email" required />
+          <button type="submit" class="btn btn-primary">Daftar Sekarang</button>
+        </form>
+        <p class="form-note">Dengan mendaftar, Anda menyetujui <a href="#">Kebijakan Privasi</a> kami.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <span class="logo-icon">◈</span>
+            <span class="logo-text">NUSANTARA<span class="logo-accent">CITY</span></span>
+          </a>
+          <p>Kota pertama di Indonesia yang dibangun untuk Permainan, Olahraga, dan Budaya bertaraf dunia.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/ahmdmvl/" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://twitter.com/" aria-label="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@nafas_opi?is_from_webapp=1&sender_device=pc" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://wa.me/6289531000775" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Perusahaan</h5>
+            <ul>
+              <li><a href="#">Tentang Kami</a></li>
+              <li><a href="#">Kepemimpinan</a></li>
+              <li><a href="#">Karir</a></li>
+              <li><a href="#">Berita & Media</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Proyek</h5>
+            <ul>
+              <li><a href="#">Nusantara City</a></li>
+              <li><a href="#">Distrik Hiburan</a></li>
+              <li><a href="#">Arena Olahraga</a></li>
+              <li><a href="#">Kawasan Budaya</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Investor</h5>
+            <ul>
+              <li><a href="#">Peluang Investasi</a></li>
+              <li><a href="#">Laporan Tahunan</a></li>
+              <li><a href="#">Hubungi Investor</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Nusantara City Investment Company. Hak cipta dilindungi.</p>
+        <div class="footer-legal">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat Penggunaan</a>
+          <a href="#">Cookie</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SUCCESS TOAST -->
+  <div class="toast" id="toast">
+    ✓ Pendaftaran berhasil! Kami akan segera menghubungi Anda.
+  </div>
+
+  <!-- CONTACT POPUP -->
+  <div class="contact-fab" id="contactFab">
+    <button class="contact-fab-btn" id="contactFabBtn" aria-label="Hubungi Kami">
+      <svg class="fab-icon-headset" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z" />
+        <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+      </svg>
+      <span class="fab-label">Hubungi</span>
+    </button>
+    <div class="contact-popup" id="contactPopup">
+      <div class="contact-popup-header">
+        <span>Hubungi Kami</span>
+        <button class="contact-popup-close" id="contactPopupClose" aria-label="Tutup">✕</button>
+      </div>
+      <div class="contact-popup-body">
+        <a href="https://wa.me/6289531000775" target="_blank" rel="noopener" class="contact-popup-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+          </svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/ahmdmvl/" target="_blank" rel="noopener" class="contact-popup-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+          Instagram
+        </a>
+        <a href="contact.html" class="contact-popup-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,12 2,6" />
+          </svg>
+          Email
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
