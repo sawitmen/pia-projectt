@@ -160,10 +160,14 @@ sections.forEach(s => sectionObserver.observe(s));
 (function () {
   const slides = document.querySelectorAll('.gallery-slide');
   const dotsContainer = document.getElementById('galleryDots');
-  if (!slides.length || !dotsContainer) return;
+  const galleryCarousel = document.querySelector('.gallery-carousel');
+  if (!slides.length || !dotsContainer || !galleryCarousel) return;
 
   let current = 0;
   let timer;
+  let dragStartX = 0;
+  let dragDeltaX = 0;
+  let isDragging = false;
 
   // Build dots
   slides.forEach((_, i) => {
@@ -188,7 +192,50 @@ sections.forEach(s => sectionObserver.observe(s));
     timer = setInterval(() => goTo(current + 1), 4500);
   }
 
+  function getPointerX(event) {
+    if (event.touches && event.touches.length) return event.touches[0].clientX;
+    if (event.changedTouches && event.changedTouches.length) return event.changedTouches[0].clientX;
+    return event.clientX;
+  }
+
+  function handleDragStart(event) {
+    isDragging = true;
+    dragStartX = getPointerX(event);
+    dragDeltaX = 0;
+    galleryCarousel.classList.add('dragging');
+    clearInterval(timer);
+  }
+
+  function handleDragMove(event) {
+    if (!isDragging) return;
+    dragDeltaX = getPointerX(event) - dragStartX;
+  }
+
+  function handleDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    galleryCarousel.classList.remove('dragging');
+
+    if (Math.abs(dragDeltaX) > 60) {
+      goTo(current + (dragDeltaX < 0 ? 1 : -1));
+    } else {
+      resetTimer();
+    }
+
+    dragDeltaX = 0;
+  }
+
   window.galleryMove = (dir) => goTo(current + dir);
+
+  galleryCarousel.addEventListener('mousedown', handleDragStart);
+  window.addEventListener('mousemove', handleDragMove);
+  window.addEventListener('mouseup', handleDragEnd);
+
+  galleryCarousel.addEventListener('touchstart', handleDragStart, { passive: true });
+  galleryCarousel.addEventListener('touchmove', handleDragMove, { passive: true });
+  galleryCarousel.addEventListener('touchend', handleDragEnd);
+  galleryCarousel.addEventListener('touchcancel', handleDragEnd);
+
   resetTimer();
 })();
 

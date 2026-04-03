@@ -602,6 +602,12 @@ ul {
   width: 100%;
   height: 520px;
   overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+
+.gallery-carousel.dragging {
+  cursor: grabbing;
 }
 
 .gallery-track {
