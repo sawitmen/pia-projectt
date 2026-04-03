@@ -168,6 +168,7 @@ sections.forEach(s => sectionObserver.observe(s));
   let dragStartX = 0;
   let dragDeltaX = 0;
   let isDragging = false;
+  let carouselWidth = galleryCarousel.clientWidth;
 
   // Build dots
   slides.forEach((_, i) => {
@@ -178,12 +179,49 @@ sections.forEach(s => sectionObserver.observe(s));
     dotsContainer.appendChild(dot);
   });
 
+  function getIndex(index) {
+    return (index + slides.length) % slides.length;
+  }
+
+  function syncDots() {
+    Array.from(dotsContainer.children).forEach((dot, index) => {
+      dot.classList.toggle('active', index === current);
+    });
+  }
+
+  function renderSlides(dragPercent = 0) {
+    const prev = getIndex(current - 1);
+    const next = getIndex(current + 1);
+
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === current);
+      slide.style.opacity = '0';
+      slide.style.transform = index < current ? 'translateX(-100%)' : 'translateX(100%)';
+      slide.style.pointerEvents = 'none';
+    });
+
+    slides[prev].style.opacity = '1';
+    slides[prev].style.transform = `translateX(${dragPercent - 100}%)`;
+
+    slides[current].style.opacity = '1';
+    slides[current].style.transform = `translateX(${dragPercent}%)`;
+    slides[current].style.pointerEvents = 'auto';
+
+    slides[next].style.opacity = '1';
+    slides[next].style.transform = `translateX(${dragPercent + 100}%)`;
+
+    syncDots();
+  }
+
+  function setDraggingState(dragging) {
+    slides.forEach((slide) => {
+      slide.style.transition = dragging ? 'none' : '';
+    });
+  }
+
   function goTo(index) {
-    slides[current].classList.remove('active');
-    dotsContainer.children[current].classList.remove('active');
-    current = (index + slides.length) % slides.length;
-    slides[current].classList.add('active');
-    dotsContainer.children[current].classList.add('active');
+    current = getIndex(index);
+    renderSlides(0);
     resetTimer();
   }
 
@@ -200,25 +238,31 @@ sections.forEach(s => sectionObserver.observe(s));
 
   function handleDragStart(event) {
     isDragging = true;
+    carouselWidth = galleryCarousel.clientWidth || 1;
     dragStartX = getPointerX(event);
     dragDeltaX = 0;
     galleryCarousel.classList.add('dragging');
+    setDraggingState(true);
     clearInterval(timer);
   }
 
   function handleDragMove(event) {
     if (!isDragging) return;
     dragDeltaX = getPointerX(event) - dragStartX;
+    const dragPercent = Math.max(-100, Math.min(100, (dragDeltaX / carouselWidth) * 100));
+    renderSlides(dragPercent);
   }
 
   function handleDragEnd() {
     if (!isDragging) return;
     isDragging = false;
     galleryCarousel.classList.remove('dragging');
+    setDraggingState(false);
 
-    if (Math.abs(dragDeltaX) > 60) {
+    if (Math.abs(dragDeltaX) > Math.min(90, carouselWidth * 0.12)) {
       goTo(current + (dragDeltaX < 0 ? 1 : -1));
     } else {
+      renderSlides(0);
       resetTimer();
     }
 
@@ -226,6 +270,11 @@ sections.forEach(s => sectionObserver.observe(s));
   }
 
   window.galleryMove = (dir) => goTo(current + dir);
+
+  window.addEventListener('resize', () => {
+    carouselWidth = galleryCarousel.clientWidth || 1;
+    renderSlides(0);
+  });
 
   galleryCarousel.addEventListener('mousedown', handleDragStart);
   window.addEventListener('mousemove', handleDragMove);
@@ -236,6 +285,7 @@ sections.forEach(s => sectionObserver.observe(s));
   galleryCarousel.addEventListener('touchend', handleDragEnd);
   galleryCarousel.addEventListener('touchcancel', handleDragEnd);
 
+  renderSlides(0);
   resetTimer();
 })();
 
